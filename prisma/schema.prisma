@@ -1,0 +1,18 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id            String   @id @db.VarChar(36)
+  title         String
+  originalTitle String
+  description   String?
+  releaseDate   DateTime
+  score         Int
+}
