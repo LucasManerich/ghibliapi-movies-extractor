@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --poll --transpile-only src/delivery/HttpServerEntrypoint.ts",
     "build": "tsc",
+    "gendoc": "node ./scripts/generate-swagger.js",
     "lint": "eslint src/**/*.ts",
     "test": "jest test/unit",
     "test:integration": "jest test/integration",
@@ -36,6 +37,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "jest": "^29.3.1",
     "prisma": "^4.6.1",
+    "swagger-autogen": "^2.22.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",

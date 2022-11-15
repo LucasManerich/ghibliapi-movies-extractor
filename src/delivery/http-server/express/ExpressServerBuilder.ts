@@ -9,6 +9,7 @@ import cors from 'cors'
 
 export default class ExpressServerBuilder implements HttpServerBuilder {
   private readonly CORS_ALLOW_ORGIN = '*'
+  private readonly URL_PREFIX = '/api/v1'
   private readonly app = express();
 
   public setUpCors() {
@@ -30,7 +31,7 @@ export default class ExpressServerBuilder implements HttpServerBuilder {
 
   public setUpRoutes() {
     const router = new ExpressRouter()
-    this.app.use(router.getExpressRouter())
+    this.app.use(this.URL_PREFIX, router.getExpressRouter())
     return this
   }
 
