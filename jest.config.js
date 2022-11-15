@@ -2,10 +2,8 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   clearMocks: true,
-  globals: {
-    'ts-jest': {
-      isolatedModules: true
-    }
+  transform: {
+    '^.+\\.ts?$': ['ts-jest', { isolatedModules: true }]
   },
   moduleNameMapper: {
     '@test/(.*)': '<rootDir>/test/$1',

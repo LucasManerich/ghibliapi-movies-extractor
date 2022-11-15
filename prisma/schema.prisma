@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["interactiveTransactions"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -9,10 +8,10 @@ datasource db {
 }
 
 model Movie {
-  id            String   @id @db.VarChar(36)
-  title         String
-  originalTitle String
-  description   String?
-  releaseDate   DateTime
-  score         Int
+  id           String   @id @db.VarChar(36)
+  name         String
+  originalName String
+  description  String?
+  releaseDate  DateTime
+  score        Int
 }

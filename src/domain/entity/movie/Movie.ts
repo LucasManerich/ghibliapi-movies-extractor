@@ -4,5 +4,7 @@ export default interface Movie {
   getOriginalName(): string
   getDescription(): string|undefined
   getReleaseDate(): Date
+  getReleaseYear(): number
+  getAge(): number
   getScore(): number
 }
