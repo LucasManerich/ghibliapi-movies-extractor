@@ -1,12 +1,12 @@
 ## Ghibli API - Teste técnico para a vaga de desenvolvedor sênior
 
-Essa é uma aplicação fictícia, desenvolvida com o intuíto de demonstrar meus conhecimentos sobre engenharia de software afim de concorrer a uma vaga de desenvolvedor Node.JS sênior.
+Essa é uma aplicação fícticia, desenvolvida com o intuíto de demonstrar meus conhecimentos sobre engenharia de software afim de concorrer a uma vaga de desenvolvedor Node.JS sênior.
 
 
 
 ### Desafio:
 
-O desafio solicitado pela empresa foi a criação de um serviço REST que consuma dados da API aberta do estúdio Ghibli, persistindo esses dados em um banco de dados local e depois disponibilizar a consulta a esses dados através de um Endpoint HTTP.
+O desafio solicitado pela empresa foi a criação de uma API REST que consuma dados da API aberta do estúdio Ghibli, persistindo esses dados em um banco de dados local e depois disponibilizar a consulta a esses dados através de um Endpoint HTTP.
 
 
 
@@ -76,6 +76,10 @@ sequenceDiagram
     api->>+ghibli: Requisição HTTP - API Ghibli
     ghibli-->>-api: Lista de filmes
     api->>+pg: Persiste dados de filmes no DB
+    user->>+api: /movies
+    api->>+pg: Busca lista de filmes no DB
+    pg-->>-api: Dados de filmes
+    api-->>-user: Dados de filmes
 ```
 
 
