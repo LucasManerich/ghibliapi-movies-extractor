@@ -4,19 +4,39 @@ volumes:
   database:
 
 services:
+  api_ghibli_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_ghibli_server
+    restart: always
+    environment:
+      - GHIBLI_API_URL=https://ghibliapi.herokuapp.com
+      - RABBIT_HOST=api_ghibli_rabbitmq
+      - RABBIT_PORT=5672
+      - RABBIT_PASSWORD=ghibliapi
+      - RABBIT_USER=ghibliapi
+      - DATABASE_URL=postgresql://postgres:postgres@api_ghibli_db:5432/api_db
+    ports:
+      - 3000:3000
+    depends_on:
+      - api_ghibli_db
+      - api_ghibli_rabbitmq
   api_ghibli_db:
     image: postgres:14.1-alpine
+    container_name: api_ghibli_db
     restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=api_db
     ports:
-      - '5432:5432'
+      - 5432:5432
     volumes:
       - database:/var/lib/postgresql/data
-  rabbitmq:
+  api_ghibli_rabbitmq:
     image: rabbitmq:3-management
+    container_name: api_ghibli_rabbitmq
     ports: 
       - 5672:5672
       - 25672:25672
