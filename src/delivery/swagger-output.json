@@ -1,0 +1,123 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Ghibli Movies",
+    "description": "API para interação do os conteúdos da produtora Studio Ghibli."
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Movies",
+      "description": "Endpoints de interação com a API de filmes"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "Endpoint de listagem dos filmes",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Quantidade máxima de registros",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Quantidade de registros a serem desconsiderados",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de filmes",
+            "schema": {
+              "$ref": "#/definitions/MovieList"
+            }
+          }
+        }
+      }
+    },
+    "/movies/request-update": {
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "Endpoint para solicitação de atualização da base de dados",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Mensagem de sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Movies update added to queue."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Movie": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "2baf70d1-42bb-4437-b551-e5fed5a87abe"
+        },
+        "name": {
+          "type": "string",
+          "example": "Castle in the Sky"
+        },
+        "original_name": {
+          "type": "string",
+          "example": "天空の城ラピュタ"
+        },
+        "score": {
+          "type": "number",
+          "example": 94
+        },
+        "release_year": {
+          "type": "number",
+          "example": 1986
+        },
+        "description": {
+          "type": "string",
+          "example": "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself ruler of the world."
+        }
+      }
+    },
+    "MovieList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Movie"
+      }
+    }
+  }
+}

@@ -30,11 +30,11 @@ export default class MovieImpl implements Movie {
     return this.releaseDate
   }
 
-  public getReleaseYear() {
+  public getReleaseYear () {
     return this.releaseDate.getFullYear()
   }
 
-  public getAge() {
+  public getAge () {
     const currentDate = new Date()
     return currentDate.getFullYear() - this.getReleaseYear()
   }

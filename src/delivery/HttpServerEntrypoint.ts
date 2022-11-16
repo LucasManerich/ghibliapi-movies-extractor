@@ -8,6 +8,7 @@ const startHttpServer = () => {
     .setUpLogger()
     .setUpSecurity()
     .setUpRoutes()
+    .setUpApiDocs()
     .build()
   server.start()
 }

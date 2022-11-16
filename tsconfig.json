@@ -1,17 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es2019",                               
-    "experimentalDecorators": true,                   
-    "emitDecoratorMetadata": true,                    
+    "target": "es2019",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "module": "commonjs",
     "baseUrl": "./",
     "paths": {
-      "@application/*": ["./src/application/*"],
-      "@delivery/*": ["./src/delivery/*"],
-      "@domain/*": ["./src/domain/*"],
-      "@infrastructure/*": ["./src/infrastructure/*"],
-      "@main/*": ["./src/main/*"],
-      "@test/*": ["./test/*"]
+      "@application/*": [
+        "./src/application/*"
+      ],
+      "@delivery/*": [
+        "./src/delivery/*"
+      ],
+      "@domain/*": [
+        "./src/domain/*"
+      ],
+      "@infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "@main/*": [
+        "./src/main/*"
+      ],
+      "@test/*": [
+        "./test/*"
+      ]
     },
     "outDir": "dist",
     "esModuleInterop": true,

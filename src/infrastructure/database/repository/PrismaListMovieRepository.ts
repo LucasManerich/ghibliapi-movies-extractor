@@ -3,11 +3,11 @@ import MovieBuider from '@domain/entity/movie/MovieBuilder'
 import { PrismaClient } from '@prisma/client'
 
 export default class PrismaListMovieRepository implements ListMovieRepository {
-  public constructor(
+  public constructor (
     private readonly prisma: PrismaClient
   ) { }
 
-  public async list(params: ListMovieRepositoryParams) {
+  public async list (params: ListMovieRepositoryParams) {
     const queryResult = await this.runQuery(params.limit, params.offset)
     return queryResult.map(movieQueryResult => {
       return new MovieBuider()
@@ -21,7 +21,7 @@ export default class PrismaListMovieRepository implements ListMovieRepository {
     })
   }
 
-  private async runQuery(limit?: number, offset?: number) {
+  private async runQuery (limit?: number, offset?: number) {
     return await this.prisma.movie.findMany({
       orderBy: { releaseDate: 'desc' },
       take: limit,
